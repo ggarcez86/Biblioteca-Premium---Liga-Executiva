@@ -1,10 +1,14 @@
 
 import { GoogleGenAI, Type, Modality } from "@google/genai";
 
-// Initialize Gemini API client using the environment variable directly.
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+// Helper to safely get the AI instance
+const getAI = () => {
+  const apiKey = process.env.API_KEY;
+  return new GoogleGenAI({ apiKey: apiKey || '' });
+};
 
 export const summarizeContent = async (text: string) => {
+  const ai = getAI();
   const response = await ai.models.generateContent({
     model: 'gemini-3-flash-preview',
     contents: `Resuma o seguinte trecho de livro de forma concisa e elegante: "${text}"`,
@@ -13,6 +17,7 @@ export const summarizeContent = async (text: string) => {
 };
 
 export const chatWithContext = async (bookTitle: string, context: string, userMessage: string, history: any[]) => {
+  const ai = getAI();
   const chat = ai.chats.create({
     model: 'gemini-3-flash-preview',
     config: {
@@ -25,6 +30,7 @@ export const chatWithContext = async (bookTitle: string, context: string, userMe
 };
 
 export const getGroundingInfo = async (query: string) => {
+  const ai = getAI();
   const response = await ai.models.generateContent({
     model: 'gemini-3-flash-preview',
     contents: query,
@@ -48,6 +54,7 @@ export const getGroundingInfo = async (query: string) => {
 };
 
 export const generateSpeech = async (text: string): Promise<string | null> => {
+  const ai = getAI();
   try {
     const response = await ai.models.generateContent({
       model: "gemini-2.5-flash-preview-tts",
