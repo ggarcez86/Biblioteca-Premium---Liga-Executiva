@@ -1,0 +1,7 @@
+{
+  "name": "Lumina AI Reader",
+  "description": "A world-class AI-powered e-book visualization and analysis platform featuring Gemini integration for summaries, context grounding, and text-to-speech narration.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
