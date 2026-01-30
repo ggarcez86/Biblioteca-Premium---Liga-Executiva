@@ -1,6 +1,6 @@
 {
-  "name": "Lumina AI Reader",
-  "description": "A world-class AI-powered e-book visualization and analysis platform featuring Gemini integration for summaries, context grounding, and text-to-speech narration.",
+  "name": "Liga Executiva - Biblioteca Premium",
+  "description": "Acesso exclusivo aos guias e e-books premium da Liga Executiva.",
   "requestFramePermissions": [
     "microphone"
   ]
