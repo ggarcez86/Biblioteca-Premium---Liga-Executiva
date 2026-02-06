@@ -10,7 +10,7 @@ interface LibraryProps {
 
 const Library: React.FC<LibraryProps> = ({ onSelectBook, onGoHome }) => {
   return (
-    <div className="h-screen h-[100dvh] bg-[#000000] text-white flex flex-col animate-in fade-in duration-500 overflow-hidden">
+    <div className="min-h-[100dvh] bg-[#000000] text-white flex flex-col animate-in fade-in duration-500">
       {/* Header Bar - Centralizado e compacto */}
       <header className="px-6 pt-6 md:pt-10 pb-4 md:pb-8 flex flex-col items-center space-y-4 md:space-y-6 text-center shrink-0">
         <div className="w-full max-w-[90px] md:max-w-[130px] overflow-hidden rounded-xl border border-white/5 shadow-2xl">
@@ -27,7 +27,7 @@ const Library: React.FC<LibraryProps> = ({ onSelectBook, onGoHome }) => {
       </header>
 
       {/* Content Area */}
-      <div className="flex-1 overflow-y-auto px-8 md:px-16 lg:px-32 pb-40 touch-pan-y">
+      <div className="flex-1 px-8 md:px-16 lg:px-32 pb-40">
         
         {/* Badge - Recentes */}
         <div className="mb-8 md:mb-12 flex justify-center md:justify-start">
@@ -39,25 +39,28 @@ const Library: React.FC<LibraryProps> = ({ onSelectBook, onGoHome }) => {
         {/* Lista de Livros em Grade */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-12 md:gap-16 justify-items-center">
           {MOCK_BOOKS.map(book => (
-            <div key={book.id} className="flex flex-col items-center sm:items-start w-full max-w-[200px] md:max-w-[240px] animate-in slide-in-from-bottom duration-700">
+            <div key={book.id} className="flex flex-col items-center sm:items-start w-full max-w-[220px] md:max-w-[260px] animate-in slide-in-from-bottom duration-700">
               
-              {/* Container da Capa */}
+              {/* Container da Capa - Ajustado para não cortar */}
               <div 
                 onClick={() => onSelectBook(book)}
-                className="w-full aspect-[3/4] rounded-2xl overflow-hidden relative shadow-2xl border border-white/10 group transition-all hover:scale-[1.02] active:scale-95 bg-[#111] cursor-pointer"
+                className="w-full aspect-[3/4] rounded-2xl overflow-hidden relative shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/10 group transition-all hover:scale-[1.02] active:scale-95 bg-[#0A0A0A] cursor-pointer flex items-center justify-center"
               >
                 <img 
                   src={book.coverUrl} 
-                  className="w-full h-full object-cover" 
+                  className="w-full h-full object-contain p-1" 
                   alt={book.title} 
                 />
-                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                   <div className="bg-[#E5C04A] text-black rounded-full p-3 shadow-xl">
+                
+                {/* Overlay de Hover */}
+                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-[2px]">
+                   <div className="bg-[#E5C04A] text-black rounded-full p-3 shadow-xl transform scale-75 group-hover:scale-100 transition-transform">
                       <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M12 4v16m8-8H4" />
                       </svg>
                    </div>
                 </div>
+
                 {book.isNew && (
                   <div className="absolute top-2 right-2 md:top-3 md:right-3 bg-[#E5C04A] text-black text-[7px] md:text-[8px] font-black px-2 py-0.5 rounded italic shadow-md z-10">NOVO</div>
                 )}
@@ -89,7 +92,7 @@ const Library: React.FC<LibraryProps> = ({ onSelectBook, onGoHome }) => {
       </div>
 
       {/* Bottom Navigation */}
-      <nav className="fixed bottom-0 left-0 w-full bg-[#000000]/95 border-t border-white/5 px-8 py-5 md:py-7 flex justify-center items-center z-40 backdrop-blur-xl shrink-0">
+      <nav className="fixed bottom-0 left-0 w-full bg-black/90 border-t border-white/5 px-8 py-5 md:py-7 flex justify-center items-center z-40 backdrop-blur-xl shrink-0">
         <button 
           onClick={onGoHome}
           className="flex flex-col items-center gap-1.5 text-[#E5C04A] transition-all hover:opacity-80 active:scale-90"
