@@ -30,5 +30,16 @@ export const MOCK_BOOKS: Book[] = [
     description: 'Transforme sua comunicação corporativa com assistentes de IA especializados em e-mails.',
     content: 'Neste volume, exploramos como configurar prompts específicos para redação de e-mails de alta performance, negociações complexas e gestão de agenda...',
     isNew: true
+  },
+  {
+    id: 'ia-executiva-3',
+    title: 'Método Matriz Estratégica - Controle sua rotina com IA',
+    author: 'LIGA EXECUTIVA',
+    coverUrl: 'https://ligaexecutiva.com.br/M%C3%89TODO%20MATRIZ%20ENERG%C3%89TICA.webp',
+    pdfUrl: 'https://ligaexecutiva.com.br/Domine-Sua-Rotina-com-o-Metodo-da-Matriz-Estrategica.pdf',
+    category: 'IA Corporativa',
+    description: 'Aprenda a controlar sua rotina e maximizar sua produtividade utilizando o método da Matriz Estratégica com IA.',
+    content: 'Neste material, você aprenderá como aplicar a Matriz Estratégica aliada à Inteligência Artificial para gerenciar seu tempo, priorizar tarefas e otimizar sua rotina executiva...',
+    isNew: true
   }
 ];
